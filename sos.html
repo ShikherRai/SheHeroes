@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOS Button</title>
+  <link rel="stylesheet" href="sos.css">
+</head>
+<body>
+
+  <section class="bg-white p-6 rounded-lg shadow-md slide-in">
+    <h2 class="text-xl font-bold mb-4">SOS Facilities</h2>
+    <div class="flex flex-col md:flex-row items-center">
+      <div class="w-full md:w-1/2 mb-4 md:mb-0">
+        <img
+          alt="Emergency SOS button on a mobile phone screen"
+          class="rounded-lg shadow-md"
+          height="300"
+          src="sos.jpg"
+          width="400"
+          loading="lazy"
+        />
+      </div>
+      <div class="w-full md:w-1/2 md:pl-4">
+        <p class="mb-2">
+          In case of emergency, press the SOS button to alert your emergency contacts and nearby authorities.
+        </p>
+        <button
+          id="sos-button"
+          aria-label="Send emergency SOS alert"
+          class="sos-button"
+        >
+          <i class="fas fa-exclamation-triangle mr-2"></i> Send SOS
+        </button>
+        <p
+          id="sos-feedback"
+          class="hidden"
+        >
+          SOS Alert Sent Successfully!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
