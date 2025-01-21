@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety - Authentication</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional Styling */
+        .auth-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .active-tab {
+            border-bottom: 2px solid #FF6F61;
+        }
+
+        .auth-section {
+            display: none;
+        }
+
+        .auth-section:not(.hidden) {
+            display: block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #FF6F61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #FF3D2F;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password {
+            font-size: 0.9rem;
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #FF6F61;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <header class="bg-pink-600 text-white text-center p-4">
+            <h1>Women Safety Tools</h1>
+            <p>Protect. Empower. Support.</p>
+        </header>
+
+        <div class="tabs">
+            <button id="login-tab" class="tab active-tab">Login</button>
+            <button id="signup-tab" class="tab">Sign Up</button>
+        </div>
+
+        <div id="login-section" class="auth-section">
+            <form id="login-form" action="#" method="post">
+                <div id="login-error" class="error"></div>
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="signup-section" class="auth-section hidden">
+            <form id="signup-form" action="#" method="post">
+                <div id="signup-error" class="error"></div>
+                <label for="signup-name">Full Name</label>
+                <input type="text" id="signup-name" name="name" placeholder="Enter your full name" required>
+
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+
+                <label for="signup-confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginTab = document.getElementById('login-tab');
+        const signupTab = document.getElementById('signup-tab');
+        const loginSection = document.getElementById('login-section');
+        const signupSection = document.getElementById('signup-section');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+
+        // Tab switching functionality
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active-tab');
+            signupTab.classList.remove('active-tab');
+            loginSection.classList.remove('hidden');
+            signupSection.classList.add('hidden');
+        });
+
+        signupTab.addEventListener('click', () => {
+            signupTab.classList.add('active-tab');
+            loginTab.classList.remove('active-tab');
+            signupSection.classList.remove('hidden');
+            loginSection.classList.add('hidden');
+        });
+
+        // Basic form validation
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            if (!email || !password) {
+                document.getElementById('login-error').textContent = 'Both fields are required.';
+                return;
+            }
+
+            // Perform login (add backend integration here)
+            alert('Login successful!');
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                document.getElementById('signup-error').textContent = 'All fields are required.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById('signup-error').textContent = 'Passwords do not match.';
+                return;
+            }
+
+            // Perform signup (add backend integration here)
+            alert('Sign-up successful!');
+        });
+    </script>
+</body>
+</html>

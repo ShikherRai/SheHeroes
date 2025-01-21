@@ -1,0 +1,29 @@
+/* Default (light) mode styles */
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.dark-mode-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .dark-mode-btn {
+    color: white;
+    border-color: white;
+}
